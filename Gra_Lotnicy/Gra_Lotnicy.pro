@@ -14,4 +14,10 @@ SOURCES += \
         main.cpp
 
 HEADERS += \
-    lotnicy.h
+    balon_soj.h \
+    balon_wr.h \
+    bron.h \
+    latajace.h \
+    obiekt.h \
+    samolot_soj.h \
+    samolot_wr.h
