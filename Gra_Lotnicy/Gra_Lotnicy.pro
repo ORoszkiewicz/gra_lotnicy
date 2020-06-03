@@ -1,5 +1,5 @@
 TEMPLATE = app
-CONFIG += console c++11
+CONFIG += console c++17a
 CONFIG -= app_bundle
 CONFIG -= qt
 INCLUDEPATH += "C:/SFML-2.5.1/include"
@@ -11,13 +11,8 @@ CONFIG(debug, debug|release){
 }
 
 SOURCES += \
+        lotnicy.cpp \
         main.cpp
 
 HEADERS += \
-    balon_soj.h \
-    balon_wr.h \
-    bron.h \
-    latajace.h \
-    obiekt.h \
-    samolot_soj.h \
-    samolot_wr.h
+    header.h
