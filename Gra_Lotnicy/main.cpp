@@ -6,10 +6,10 @@ using namespace std;
 int main()
 {
     std::vector<std::unique_ptr<obiekt>> obiekty;
-    sf::Texture baloon;
-    if(!baloon.loadFromFile("clouds.png")) { std::cout<<"Texture not loaded"<<std::endl; }
-    balon_wr balon(baloon, 5, 2, 1, 1);
-    obiekty.emplace_back(std::make_unique<balon_wr>(balon));
+    sf::Texture tloo;
+    if(!tloo.loadFromFile("gorki.png")) { std::cout<<"Texture not loaded"<<std::endl; }
+    tlo gory(tloo, 1, 1);
+    obiekty.emplace_back(std::make_unique<tlo>(gory));
 
     sf::RenderWindow window(sf::VideoMode(800.0, 600.0), "Lotnicy");
     window.setVerticalSyncEnabled(true);

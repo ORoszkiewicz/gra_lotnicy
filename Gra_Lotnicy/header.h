@@ -20,7 +20,7 @@ private:
     float speed_y;
     int hearts;
 public:
-    balon_soj();
+    balon_soj(sf::Texture &tekstura, int x, int y, float speedx, float speedy);
     void move();
 };
 
@@ -38,7 +38,7 @@ class bron : public obiekt{
 private:
     int hearts;
 public:
-    bron();
+    bron(sf::Texture &tekstura, int x, int y);
     void strzelaj();
     void move();
 };
@@ -49,7 +49,7 @@ private:
     float speed_y;
     int hearts;
 public:
-    samolot_soj();
+    samolot_soj(sf::Texture &tekstura, int x, int y, float speedx, float speedy);
     void move();
 };
 
@@ -60,8 +60,18 @@ private:
     float speed_y;
     int hearts;
 public:
-    samolot_wr();
+    samolot_wr(sf::Texture &tekstura, int x, int y, float speedx, float speedy);
     void move();
+};
+
+class tlo : public obiekt{
+public:
+    tlo(sf::Texture &tekstura, int x, int y);
+};
+
+class serca : public obiekt{
+public:
+    serca(sf::Texture &tekstura, int x, int y, int liczba_serc);
 };
 
 #endif // BALON_SOJ_H
