@@ -13,9 +13,14 @@ int main()
     obiekty.emplace_back(std::make_unique<tlo>(gory));
 
     sf::Texture samolot_wrogi;
-    if(!samolot_wrogi.loadFromFile("Biplane.png")) { std::cout<<"Texture not loaded"<<std::endl; }
-    samolot_wr samolot1(samolot_wrogi, 1, 1, 1, 1);
+    if(!samolot_wrogi.loadFromFile("Biplane-kopia.png")) { std::cout<<"Texture not loaded"<<std::endl; }
+    samolot_wr samolot1(samolot_wrogi, 1, 1, 100, 0);
     obiekty.emplace_back(std::make_unique<samolot_wr>(samolot1));
+
+    sf::Texture samolot_dobry;
+    if(!samolot_dobry.loadFromFile("Biplane2.png")) { std::cout<<"Texture not loaded"<<std::endl; }
+    samolot_soj samolot2(samolot_dobry, 500, 1, 100, 0);
+    obiekty.emplace_back(std::make_unique<samolot_soj>(samolot2));
 
     sf::RenderWindow window(sf::VideoMode(800.0, 600.0), "Lotnicy");
     window.setVerticalSyncEnabled(true);
@@ -39,5 +44,6 @@ int main()
          for(auto &e:obiekty) window.draw(*e);
         window.display();
     }
+   // samolot1.moving(100, 0, elapsed);
     return 0;
 }

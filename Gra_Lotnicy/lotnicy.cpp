@@ -20,6 +20,12 @@ samolot_wr :: samolot_wr(sf::Texture &tekstura, int x, int y, float speedx, floa
     setPosition(x, y);
     setTexture(tekstura);
 }
+void samolot_wr :: moving(float speedx, float speedy, sf::Time elapsed){
+    speed_x = speedx;
+    speed_y = speedy;
+    float time=elapsed.asSeconds();
+    move(speed_x*time, speed_y*time);
+}
 
 samolot_soj :: samolot_soj(sf::Texture &tekstura, int x, int y, float speedx, float speedy){
     speed_x = speedx;

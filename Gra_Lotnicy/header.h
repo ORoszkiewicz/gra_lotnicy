@@ -11,7 +11,7 @@
 
 class obiekt: public sf::Sprite{
 public:
-    //virtual void move() = 0;
+    //virtual void moving() = 0;
 };
 
 class balon_soj : public obiekt{
@@ -21,7 +21,7 @@ private:
     int hearts;
 public:
     balon_soj(sf::Texture &tekstura, int x, int y, float speedx, float speedy);
-    void move();
+    void moving();
 };
 
 class balon_wr : public obiekt{
@@ -31,7 +31,7 @@ private:
     int hearts;
 public:
     balon_wr(sf::Texture &tekstura, int x, int y, float speedx, float speedy);
-    void move();
+    void moving();
 };
 
 class bron : public obiekt{
@@ -40,7 +40,7 @@ private:
 public:
     bron(sf::Texture &tekstura, int x, int y);
     void strzelaj();
-    void move();
+    void moving();
 };
 
 class samolot_soj : public obiekt{
@@ -50,7 +50,7 @@ private:
     int hearts;
 public:
     samolot_soj(sf::Texture &tekstura, int x, int y, float speedx, float speedy);
-    void move();
+    void moving();
 };
 
 
@@ -61,7 +61,7 @@ private:
     int hearts;
 public:
     samolot_wr(sf::Texture &tekstura, int x, int y, float speedx, float speedy);
-    void move();
+    void moving(float speedx, float speedy, sf::Time elapsed);
 };
 
 class tlo : public obiekt{
