@@ -14,18 +14,40 @@ balon_soj :: balon_soj(sf::Texture &tekstura, int x, int y, float speedx, float 
     setTexture(tekstura);
 }
 
-samolot_wr :: samolot_wr(sf::Texture &tekstura, int x, int y, float speedx, float speedy){
+samolot_wr :: samolot_wr(sf::Texture &tekstura, int x, int y, float speedx, float speedy,sf::IntRect lewy_,sf::IntRect prawy_){
+    lewy=lewy_;
+    prawy=prawy_;
     speed_x = speedx;
     speed_y = speedy;
     setPosition(x, y);
     setTexture(tekstura);
+    //setTexture(left);
+    left=1;
 }
-void samolot_wr :: moving(float speedx, float speedy, sf::Time elapsed){
-    speed_x = speedx;
-    speed_y = speedy;
+void samolot_wr::moving(sf::Time elapsed){
+    float time=elapsed.asSeconds();
+    if(left==1){
+        move(speed_x*time, speed_y*time);
+        if((getGlobalBounds().width+getGlobalBounds().left)>=1000){
+            left=0;
+        }
+    }
+    if(left==0){
+        move(-speed_x*time, -speed_y*time);
+        if((getGlobalBounds().width+getGlobalBounds().left)<=-100){
+            left=1;
+
+        }
+    }
+}
+void samolot_soj::moving(sf::Time elapsed){
+
+
     float time=elapsed.asSeconds();
     move(speed_x*time, speed_y*time);
+
 }
+
 
 samolot_soj :: samolot_soj(sf::Texture &tekstura, int x, int y, float speedx, float speedy){
     speed_x = speedx;

@@ -31,7 +31,7 @@ private:
     int hearts;
 public:
     balon_wr(sf::Texture &tekstura, int x, int y, float speedx, float speedy);
-    void moving();
+    void moving(sf::Time elapsed);
 };
 
 class bron : public obiekt{
@@ -50,18 +50,21 @@ private:
     int hearts;
 public:
     samolot_soj(sf::Texture &tekstura, int x, int y, float speedx, float speedy);
-    void moving();
+    void moving(sf::Time elapsed);
 };
 
 
 class samolot_wr : public obiekt{
+    sf::IntRect lewy;
+    sf::IntRect prawy;
+    bool left;
 private:
     float speed_x;
     float speed_y;
     int hearts;
 public:
-    samolot_wr(sf::Texture &tekstura, int x, int y, float speedx, float speedy);
-    void moving(float speedx, float speedy, sf::Time elapsed);
+    samolot_wr(sf::Texture &tekstura, int x, int y, float speedx, float speedy, sf::IntRect lewy_,sf::IntRect prawy_);
+    void moving(sf::Time elapsed);
 };
 
 class tlo : public obiekt{
