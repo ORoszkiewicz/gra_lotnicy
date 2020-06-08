@@ -7,11 +7,44 @@ balon_wr :: balon_wr(sf::Texture &tekstura, int x, int y, float speedx, float sp
     setTexture(tekstura);
 }
 
+void balon_wr :: moving(sf::Time elapsed){
+    float time=elapsed.asSeconds();
+    if(left==1){
+        move(speed_x*time, speed_y*time);
+        if((getGlobalBounds().height+getGlobalBounds().top)<=0){
+            left=0;
+        }
+    }
+    if(left==0){
+        move(-speed_x*time, -speed_y*time);
+        if((getGlobalBounds().width+getGlobalBounds().top)>=780){
+            left=1;
+
+        }
+    }
+}
+
 balon_soj :: balon_soj(sf::Texture &tekstura, int x, int y, float speedx, float speedy){
     speed_x = speedx;
     speed_y = speedy;
     setPosition(x, y);
     setTexture(tekstura);
+}
+void balon_soj :: moving(sf::Time elapsed){
+    float time=elapsed.asSeconds();
+    if(left==1){
+        move(speed_x*time, speed_y*time);
+        if((getGlobalBounds().height+getGlobalBounds().top)<=0){
+            left=0;
+        }
+    }
+    if(left==0){
+        move(-speed_x*time, -speed_y*time);
+        if((getGlobalBounds().width+getGlobalBounds().top)>=730){
+            left=1;
+
+        }
+    }
 }
 
 samolot_wr :: samolot_wr(sf::Texture &tekstura, int x, int y, float speedx, float speedy,sf::IntRect lewy_,sf::IntRect prawy_){
@@ -20,9 +53,9 @@ samolot_wr :: samolot_wr(sf::Texture &tekstura, int x, int y, float speedx, floa
     speed_x = speedx;
     speed_y = speedy;
     setPosition(x, y);
-    setTexture(tekstura);
-    //setTexture(left);
     left=1;
+    if(left == 1) setTexture(tekstura);
+    //else if(left==0) setTexture(left);
 }
 void samolot_wr::moving(sf::Time elapsed){
     float time=elapsed.asSeconds();
@@ -41,19 +74,34 @@ void samolot_wr::moving(sf::Time elapsed){
     }
 }
 void samolot_soj::moving(sf::Time elapsed){
-
-
     float time=elapsed.asSeconds();
-    move(speed_x*time, speed_y*time);
+    if(left==1){
+        move(speed_x*time, speed_y*time);
+        if((getGlobalBounds().width+getGlobalBounds().left)>=1000){
+            left=0;
+        }
+    }
+    if(left==0){
+        move(-speed_x*time, -speed_y*time);
+        if((getGlobalBounds().width+getGlobalBounds().left)<=-100){
+            left=1;
+
+        }
+    }
 
 }
 
 
-samolot_soj :: samolot_soj(sf::Texture &tekstura, int x, int y, float speedx, float speedy){
+samolot_soj :: samolot_soj(sf::Texture &tekstura, int x, int y, float speedx, float speedy, sf::IntRect lewy_,sf::IntRect prawy_){
+    lewy=lewy_;
+    prawy=prawy_;
     speed_x = speedx;
     speed_y = speedy;
     setPosition(x, y);
-    setTexture(tekstura);
+    left=1;
+    if(left == 1) setTexture(tekstura);
+    //else if(left==0) setTexture(left);
+
 }
 
 bron :: bron(sf::Texture &tekstura, int x, int y){
