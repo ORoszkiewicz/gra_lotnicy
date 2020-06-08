@@ -54,18 +54,21 @@ samolot_wr :: samolot_wr(sf::Texture &tekstura, int x, int y, float speedx, floa
     speed_y = speedy;
     setPosition(x, y);
     left=1;
-    if(left == 1) setTexture(tekstura);
-    //else if(left==0) setTexture(left);
+    setTexture(tekstura);
+    setTextureRect(lewy);
+
 }
 void samolot_wr::moving(sf::Time elapsed){
     float time=elapsed.asSeconds();
     if(left==1){
+        setTextureRect(lewy);
         move(speed_x*time, speed_y*time);
         if((getGlobalBounds().width+getGlobalBounds().left)>=1000){
             left=0;
         }
     }
     if(left==0){
+        setTextureRect(prawy);
         move(-speed_x*time, -speed_y*time);
         if((getGlobalBounds().width+getGlobalBounds().left)<=-100){
             left=1;
@@ -76,12 +79,14 @@ void samolot_wr::moving(sf::Time elapsed){
 void samolot_soj::moving(sf::Time elapsed){
     float time=elapsed.asSeconds();
     if(left==1){
+        setTextureRect(lewy);
         move(speed_x*time, speed_y*time);
         if((getGlobalBounds().width+getGlobalBounds().left)>=1000){
             left=0;
         }
     }
     if(left==0){
+        setTextureRect(prawy);
         move(-speed_x*time, -speed_y*time);
         if((getGlobalBounds().width+getGlobalBounds().left)<=-100){
             left=1;
@@ -99,8 +104,8 @@ samolot_soj :: samolot_soj(sf::Texture &tekstura, int x, int y, float speedx, fl
     speed_y = speedy;
     setPosition(x, y);
     left=1;
-    if(left == 1) setTexture(tekstura);
-    //else if(left==0) setTexture(left);
+    setTexture(tekstura);
+    setTextureRect(lewy);
 
 }
 

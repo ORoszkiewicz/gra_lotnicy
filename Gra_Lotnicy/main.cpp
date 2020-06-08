@@ -14,12 +14,12 @@ int main()
 
     sf::Texture samolot_wrogi;
     if(!samolot_wrogi.loadFromFile("samolot_red.png")) { std::cout<<"Texture not loaded"<<std::endl; }
-    samolot_wr samolot1(samolot_wrogi, -500, 300, 200, -5,{0,0,0,0},{0,0,0,0});
+    samolot_wr samolot1(samolot_wrogi, -500, 300, 200, -50,{100,0,100,50},{0,0,100,50});
     obiekty.emplace_back(std::make_unique<samolot_wr>(samolot1));
 
     sf::Texture samolot_dobry;
     if(!samolot_dobry.loadFromFile("samolot_blue.png")) { std::cout<<"Texture not loaded"<<std::endl; }
-    samolot_soj samolot2(samolot_dobry, -200, 100, 200, 5, {0,0,0,0},{0,0,0,0});
+    samolot_soj samolot2(samolot_dobry, -200, 100, 200, 50, {100,0,100,50},{0,0,100,50});
     obiekty.emplace_back(std::make_unique<samolot_soj>(samolot2));
 
     sf::Texture balon_wrogi;
