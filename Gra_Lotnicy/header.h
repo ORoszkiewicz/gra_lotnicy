@@ -7,6 +7,7 @@
 #include <SFML/Audio.hpp>
 #include<math.h>
 #include<memory>
+#include <cstdlib>
 
 
 class obiekt: public sf::Sprite{
@@ -28,10 +29,10 @@ public:
 };
 
 class balon_wr : public obiekt{
+private:
     sf::IntRect lewy;
     sf::IntRect prawy;
     bool left;
-private:
     float speed_x;
     float speed_y;
     int hearts;
@@ -50,10 +51,10 @@ public:
 };
 
 class samolot_soj : public obiekt{
+private:
     sf::IntRect lewy;
     sf::IntRect prawy;
     bool left;
-private:
     float speed_x;
     float speed_y;
     int hearts;
@@ -64,10 +65,10 @@ public:
 
 
 class samolot_wr : public obiekt{
+private:
     sf::IntRect lewy;
     sf::IntRect prawy;
     bool left;
-private:
     float speed_x;
     float speed_y;
     int hearts;
@@ -82,8 +83,12 @@ public:
 };
 
 class serca : public obiekt{
+    int zycia=3;
 public:
-    serca(sf::Texture &tekstura, int x, int y, int liczba_serc);
+    serca(sf::Texture &tekstura, int x, int y);
+    int get_serca();
+    void odejmij();
+    void moving();
 };
 
 #endif // BALON_SOJ_H

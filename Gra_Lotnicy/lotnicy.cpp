@@ -119,8 +119,14 @@ tlo :: tlo(sf::Texture &tekstura, int x, int y){
     setTexture(tekstura);
 }
 
-serca :: serca(sf::Texture &tekstura, int x, int y, int liczba_serc){
+serca :: serca(sf::Texture &tekstura, int x, int y){
     setPosition(x, y);
     setTexture(tekstura);
-    int zycia = liczba_serc;
+    setScale({2,2});
 }
+void serca::moving(){
+    if(zycia==2) setTextureRect({0, 0, 32, 15});
+    if(zycia==1) setTextureRect({0, 0, 15, 15});
+}
+int serca::get_serca(){return zycia;}
+void serca::odejmij(){zycia-=1;}
