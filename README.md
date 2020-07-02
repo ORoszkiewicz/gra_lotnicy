@@ -9,3 +9,11 @@ Gra będzie liczyć nasze punkty i (mam nadzieję, że uda się to zaimplementow
  
 
 Szkic wyglądu gry: https://imgur.com/XhQ7U2V
+
+
+
+INSTRUKCJA OBSŁUGI:
+
+1. Po włączeniu gry, należy wpisać swoje imię w konsoli, po czym zatwierdzić wciskając ENTER dzięki czemu pojawi się okno z grą.
+2. Należy zestrzeliwać wrogie (czerwone) jednostki powietrzne nakierowując na nie kursor i klikając lewy przycisk myszy.
+3. Jeśli zestrzelimy więcej niż 3 sojusznicze (niebieskie oraz niebiesko-zielone) jednostki powietrzne, przegrywamy.
