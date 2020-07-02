@@ -43,6 +43,11 @@ int main()
     balon_soj balon2(balon_dobry, 400, 300, 0, -60);
     obiekty.emplace_back(std::make_unique<balon_soj>(balon2));
 
+    sf::Texture czolg;
+    if(!czolg.loadFromFile("czolg.png")) { std::cout<<"Texture not loaded"<<std::endl; }
+    bron czolg2(czolg, 680, 530);
+    obiekty.emplace_back(std::make_unique<bron>(czolg2));
+
     sf::RenderWindow window(sf::VideoMode(800.0, 600.0), "Lotnicy");
     window.setVerticalSyncEnabled(true);
     window.setFramerateLimit(30);
@@ -52,6 +57,10 @@ int main()
     serca zycie(serduszko, 10,10);
     srand(time(NULL));
     sf::Clock clock;
+    sf::Time time_sum;
+    string imie;
+    std::cout<<"Podaj imie: ";
+    std::cin>>imie;
     while (window.isOpen()) {
 
 
@@ -65,7 +74,7 @@ int main()
                 if (event.type == sf::Event::MouseButtonPressed) {
                     if(event.mouseButton.button == sf::Mouse::Left) {
                         sf::Vector2i mouse_pos_i = sf::Mouse::getPosition(window);
-                        std::cout << "Mouse clicked: " << mouse_pos_i.x << ", " << mouse_pos_i.y << std::endl;
+                        //std::cout << "Mouse clicked: " << mouse_pos_i.x << ", " << mouse_pos_i.y << std::endl;
 
                         sf::Vector2f mouse_pos_f = sf::Vector2f(mouse_pos_i);
 
@@ -146,25 +155,101 @@ int main()
             window.display();
         }
         else if(zycie.get_serca()<=0){
+             sf::Time elapsed = clock.restart();
+             time_sum+=elapsed;
+             if(time_sum.asSeconds()>2){
+                 std::cout<<"Zatrzymuję"<<std::endl;
+                 window.close();
+             }
             sf::Event event;
-            cout<<"Przegrales"<<endl;
+            punkty.setString("You lost");
+            punkty.setScale({2,2});
+            punkty.setPosition(300,250);//ustawienie nappisu
             while (window.pollEvent(event)){
                 if (event.type == sf::Event::Closed) {
                     std::cout << "Closing Window" << std::endl;
                     window.close();
                 }
             }
+
             window.clear(sf::Color::White);
+            window.draw(punkty);
             window.display();
         }
 
+    }
+    ofstream file;
+    file.open("punkty.txt", std::ios::out| std::ios::app);
+    if(!file.is_open())std::cout<<"Nie otwarto pliku"<<std::endl;
+    file<<imie<<" "<<ilosc_punktow<<std::endl;
+    sf::RenderWindow window2(sf::VideoMode(800.0, 600.0), "Lotnicy");
+    window2.setVerticalSyncEnabled(true);
+    window2.setFramerateLimit(30);
 
 
+    ifstream file_open;
+    file_open.open("punkty.txt", std::ios::in);
+    if(!file_open.is_open())std::cout<<"Nie otwarto pliku"<<std::endl;
+    std::vector<pair<string, int>> ranking;
 
+    string napis_;
+        while (!file_open.eof())
+        {
+            std::getline(file_open, napis_);
+            for (int i = 0; i <= napis_.length(); i++)
+            {
+                if (napis_[i] == ' ')
+                {
 
+                    string imie = napis_.substr(0, i);
+                    string punktu = napis_.substr(i + 1);
+                    ranking.push_back({imie,std::stoi(punktu)});
+                }
+            }
+        }
+        sort(ranking.begin(), ranking.end(),sortbysec);
+        string position_1=ranking[ranking.size()-1].first+"             "+std::to_string(ranking[ranking.size()-1].second);
+        string position_2=ranking[ranking.size()-2].first+"             "+std::to_string(ranking[ranking.size()-2].second);
+        string position_3=ranking[ranking.size()-3].first+"             "+std::to_string(ranking[ranking.size()-3].second);
+        string position_4=ranking[ranking.size()-4].first+"             "+std::to_string(ranking[ranking.size()-4].second);
+        string position_5=ranking[ranking.size()-5].first+"             "+std::to_string(ranking[ranking.size()-5].second);
+        sf::Text pos_1(position_1, MyFont);
+        pos_1.setFillColor({0,0,0});
+        pos_1.setPosition(250,100);
+        sf::Text pos_2(position_2, MyFont);
+        pos_2.setFillColor({0,0,0});
+        pos_2.setPosition(250,150);
+        sf::Text pos_3(position_3, MyFont);
+        pos_3.setFillColor({0,0,0});
+        pos_3.setPosition(250,200);
+        sf::Text pos_4(position_4, MyFont);
+        pos_4.setFillColor({0,0,0});
+        pos_4.setPosition(250,250);
+        sf::Text pos_5(position_5, MyFont);
+        pos_5.setFillColor({0,0,0});
+        pos_5.setPosition(250,300);
 
+        sf::Text rankingg("Top 5 Graczy:", MyFont);
+        rankingg.setFillColor({2,1,3});
+        rankingg.setPosition(250,50);
 
+        while (window2.isOpen()){
+        sf::Event event;
+        while (window2.pollEvent(event)){
+            if (event.type == sf::Event::Closed) {
+                std::cout << "Closing Window" << std::endl;
+                window2.close();
+            }
 
+            window2.clear(sf::Color::White);
+            window2.draw(pos_1);
+            window2.draw(pos_2);
+            window2.draw(pos_3);
+            window2.draw(pos_4);
+            window2.draw(pos_5);
+            window2.draw(rankingg);
+            window2.display();
+        }
     }
     return 0;
 }

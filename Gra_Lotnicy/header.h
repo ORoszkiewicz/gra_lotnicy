@@ -8,11 +8,13 @@
 #include<math.h>
 #include<memory>
 #include <cstdlib>
-
+#include<fstream>
+#include<string>
+#include<sstream>
 
 class obiekt: public sf::Sprite{
 public:
-    //virtual void moving() = 0;
+    //virtual void moving(sf::Time elapsed) = 0;
 };
 
 class balon_soj : public obiekt{
@@ -46,8 +48,7 @@ private:
     int hearts;
 public:
     bron(sf::Texture &tekstura, int x, int y);
-    void strzelaj();
-    void moving();
+    void moving(sf::Time elapsed);
 };
 
 class samolot_soj : public obiekt{
@@ -90,5 +91,5 @@ public:
     void odejmij();
     void moving();
 };
-
+bool sortbysec(const std::pair<std::string,int> &a,const std::pair<std::string,int> &b) ;
 #endif // BALON_SOJ_H

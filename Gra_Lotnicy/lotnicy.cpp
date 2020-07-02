@@ -112,6 +112,7 @@ samolot_soj :: samolot_soj(sf::Texture &tekstura, int x, int y, float speedx, fl
 bron :: bron(sf::Texture &tekstura, int x, int y){
     setPosition(x, y);
     setTexture(tekstura);
+    setScale({0.2,0.2});
 }
 
 tlo :: tlo(sf::Texture &tekstura, int x, int y){
@@ -130,3 +131,8 @@ void serca::moving(){
 }
 int serca::get_serca(){return zycia;}
 void serca::odejmij(){zycia-=1;}
+
+bool sortbysec(const std::pair<std::string,int> &a,const std::pair<std::string,int> &b)
+{
+    return (a.second < b.second);
+}
