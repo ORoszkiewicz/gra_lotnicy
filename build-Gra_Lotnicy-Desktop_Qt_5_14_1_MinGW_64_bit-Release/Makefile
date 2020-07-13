@@ -56,7 +56,14 @@ SOURCES       = C:\Users\olafr\Desktop\gra_lotnicy-master\Gra_Lotnicy\lotnicy.cp
 OBJECTS       = lotnicy.o \
 		main.o
 
-DIST          =  header.h C:\Users\olafr\Desktop\gra_lotnicy-master\Gra_Lotnicy\lotnicy.cpp \
+DIST          =  balon_soj.h \
+		balon_wr.h \
+		bron.h \
+		obiekt.h \
+		samolot_soj.h \
+		samolot_wr.h \
+		serca.h \
+		tlo.h C:\Users\olafr\Desktop\gra_lotnicy-master\Gra_Lotnicy\lotnicy.cpp \
 		C:\Users\olafr\Desktop\gra_lotnicy-master\Gra_Lotnicy\main.cpp
 QMAKE_TARGET  = Gra_Lotnicy
 DESTDIR        =  #avoid trailing-slash linebreak
@@ -453,7 +460,8 @@ compiler_clean:
 
 ####### Compile
 
-lotnicy.o: C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/lotnicy.cpp C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/header.h \
+lotnicy.o: C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/lotnicy.cpp C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/balon_soj.h \
+		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/obiekt.h \
 		C:/SFML-2.5.1/include/SFML/Window.hpp \
 		C:/SFML-2.5.1/include/SFML/System.hpp \
 		C:/SFML-2.5.1/include/SFML/Config.hpp \
@@ -544,10 +552,17 @@ lotnicy.o: C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/lotnicy.cpp C:/
 		C:/SFML-2.5.1/include/SFML/Audio/SoundFileFactory.hpp \
 		C:/SFML-2.5.1/include/SFML/Audio/SoundFileFactory.inl \
 		C:/SFML-2.5.1/include/SFML/Audio/SoundFileReader.hpp \
-		C:/SFML-2.5.1/include/SFML/Audio/SoundFileWriter.hpp
+		C:/SFML-2.5.1/include/SFML/Audio/SoundFileWriter.hpp \
+		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/balon_wr.h \
+		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/bron.h \
+		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/samolot_soj.h \
+		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/samolot_wr.h \
+		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/serca.h \
+		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/tlo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o lotnicy.o C:\Users\olafr\Desktop\gra_lotnicy-master\Gra_Lotnicy\lotnicy.cpp
 
-main.o: C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/main.cpp C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/header.h \
+main.o: C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/main.cpp C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/balon_soj.h \
+		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/obiekt.h \
 		C:/SFML-2.5.1/include/SFML/Window.hpp \
 		C:/SFML-2.5.1/include/SFML/System.hpp \
 		C:/SFML-2.5.1/include/SFML/Config.hpp \
@@ -638,7 +653,13 @@ main.o: C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/main.cpp C:/Users/
 		C:/SFML-2.5.1/include/SFML/Audio/SoundFileFactory.hpp \
 		C:/SFML-2.5.1/include/SFML/Audio/SoundFileFactory.inl \
 		C:/SFML-2.5.1/include/SFML/Audio/SoundFileReader.hpp \
-		C:/SFML-2.5.1/include/SFML/Audio/SoundFileWriter.hpp
+		C:/SFML-2.5.1/include/SFML/Audio/SoundFileWriter.hpp \
+		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/balon_wr.h \
+		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/bron.h \
+		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/samolot_soj.h \
+		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/samolot_wr.h \
+		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/serca.h \
+		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/tlo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o C:\Users\olafr\Desktop\gra_lotnicy-master\Gra_Lotnicy\main.cpp
 
 ####### Install
