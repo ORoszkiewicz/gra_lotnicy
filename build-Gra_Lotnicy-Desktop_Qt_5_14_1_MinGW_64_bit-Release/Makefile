@@ -60,6 +60,7 @@ DIST          =  balon_soj.h \
 		balon_wr.h \
 		bron.h \
 		obiekt.h \
+		ranking.h \
 		samolot_soj.h \
 		samolot_wr.h \
 		serca.h \
@@ -558,7 +559,8 @@ lotnicy.o: C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/lotnicy.cpp C:/
 		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/samolot_soj.h \
 		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/samolot_wr.h \
 		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/serca.h \
-		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/tlo.h
+		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/tlo.h \
+		C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/ranking.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o lotnicy.o C:\Users\olafr\Desktop\gra_lotnicy-master\Gra_Lotnicy\lotnicy.cpp
 
 main.o: C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/main.cpp C:/Users/olafr/Desktop/gra_lotnicy-master/Gra_Lotnicy/balon_soj.h \
