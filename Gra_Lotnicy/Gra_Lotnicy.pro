@@ -15,4 +15,12 @@ SOURCES += \
         main.cpp
 
 HEADERS += \
-    header.h
+    balon_soj.h \
+    balon_wr.h \
+    bron.h \
+    obiekt.h \
+    ranking.h \
+    samolot_soj.h \
+    samolot_wr.h \
+    serca.h \
+    tlo.h

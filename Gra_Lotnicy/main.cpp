@@ -1,4 +1,12 @@
-#include "header.h"
+#include <balon_soj.h>
+#include <balon_wr.h>
+#include <bron.h>
+#include <obiekt.h>
+#include <samolot_soj.h>
+#include <samolot_wr.h>
+#include <serca.h>
+#include <tlo.h>
+#include <ranking.h>
 
 using namespace std;
 
@@ -178,60 +186,15 @@ int main()
         }
 
     }
-    ofstream file;
-    file.open("punkty.txt", std::ios::out| std::ios::app);
-    if(!file.is_open())std::cout<<"Nie otwarto pliku"<<std::endl;
-    file<<imie<<" "<<ilosc_punktow<<std::endl;
+    zapisywanie(imie, ilosc_punktow);
     sf::RenderWindow window2(sf::VideoMode(800.0, 600.0), "Lotnicy");
     window2.setVerticalSyncEnabled(true);
     window2.setFramerateLimit(30);
 
 
-    ifstream file_open;
-    file_open.open("punkty.txt", std::ios::in);
-    if(!file_open.is_open())std::cout<<"Nie otwarto pliku"<<std::endl;
-    std::vector<pair<string, int>> ranking;
-
-    string napis_;
-        while (!file_open.eof())
-        {
-            std::getline(file_open, napis_);
-            for (int i = 0; i <= napis_.length(); i++)
-            {
-                if (napis_[i] == ' ')
-                {
-
-                    string imie = napis_.substr(0, i);
-                    string punktu = napis_.substr(i + 1);
-                    ranking.push_back({imie,std::stoi(punktu)});
-                }
-            }
-        }
-        sort(ranking.begin(), ranking.end(),sortbysec);
-        string position_1=ranking[ranking.size()-1].first+"             "+std::to_string(ranking[ranking.size()-1].second);
-        string position_2=ranking[ranking.size()-2].first+"             "+std::to_string(ranking[ranking.size()-2].second);
-        string position_3=ranking[ranking.size()-3].first+"             "+std::to_string(ranking[ranking.size()-3].second);
-        string position_4=ranking[ranking.size()-4].first+"             "+std::to_string(ranking[ranking.size()-4].second);
-        string position_5=ranking[ranking.size()-5].first+"             "+std::to_string(ranking[ranking.size()-5].second);
-        sf::Text pos_1(position_1, MyFont);
-        pos_1.setFillColor({0,0,0});
-        pos_1.setPosition(250,100);
-        sf::Text pos_2(position_2, MyFont);
-        pos_2.setFillColor({0,0,0});
-        pos_2.setPosition(250,150);
-        sf::Text pos_3(position_3, MyFont);
-        pos_3.setFillColor({0,0,0});
-        pos_3.setPosition(250,200);
-        sf::Text pos_4(position_4, MyFont);
-        pos_4.setFillColor({0,0,0});
-        pos_4.setPosition(250,250);
-        sf::Text pos_5(position_5, MyFont);
-        pos_5.setFillColor({0,0,0});
-        pos_5.setPosition(250,300);
-
-        sf::Text rankingg("Top 5 Graczy:", MyFont);
-        rankingg.setFillColor({2,1,3});
-        rankingg.setPosition(250,50);
+        std::vector<pair<string,int>> ranking = otwieranie_rankingu();
+        std::vector<std::string> pozycje = uzupelnianie_rankingu(ranking);
+        std::vector<sf::Text> teksty=tworzenie_tekstu(pozycje, MyFont);
 
         while (window2.isOpen()){
         sf::Event event;
@@ -242,12 +205,12 @@ int main()
             }
 
             window2.clear(sf::Color::White);
-            window2.draw(pos_1);
-            window2.draw(pos_2);
-            window2.draw(pos_3);
-            window2.draw(pos_4);
-            window2.draw(pos_5);
-            window2.draw(rankingg);
+            std::vector<sf::Text> teksty=tworzenie_tekstu(pozycje, MyFont);
+
+
+            for(auto &a:teksty){
+                            window2.draw(a);
+                        }
             window2.display();
         }
     }
