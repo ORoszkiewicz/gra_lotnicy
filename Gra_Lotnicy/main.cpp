@@ -186,7 +186,9 @@ int main()
         }
 
     }
+
     zapisywanie(imie, ilosc_punktow);
+
     sf::RenderWindow window2(sf::VideoMode(800.0, 600.0), "Lotnicy");
     window2.setVerticalSyncEnabled(true);
     window2.setFramerateLimit(30);
